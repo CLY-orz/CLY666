@@ -46,8 +46,8 @@ code_blocks:
 # Formal:
 #   icon: link || the description || color
 social:
-  fab fa-github: https://github.com/CLY-orz || Github || '#24292e'
-  fas fa-envelope: mailto:abc@example.com || Email || '#4a7dbe'
+  fas fa-envelope: mailto:leo_chen_in_cn@outlook.com || Email || '#4a7dbe'
+  fab fa-qq: tencent://message/?uin=3919764686 || QQ || '#12B7F5'
 
 # --------------------------------------
 # Image Settings
@@ -284,7 +284,7 @@ aside:
     category: true
   card_author:
     enable: true
-    description: 记录学习与生活
+    description: 代码写得一般，饭吃得很少
     button:
       enable: true
       icon: fab fa-github
@@ -292,7 +292,7 @@ aside:
       link: https://github.com/CLY-orz
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: '别看了，快写作业。'
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -792,7 +792,7 @@ text_align_justify: false
 
 # Add a mask to the header and footer
 mask:
-  header: true
+  header: false
   footer: true
 
 # Loading Animation
