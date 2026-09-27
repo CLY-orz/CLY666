@@ -102,5 +102,5 @@ theme: btfl
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: git@gitee.com:leochenhaha/leochenhaha.gitee.io.git
-  branch: master
+  repo: git@github.com:CLY-orz/CLY666-deploy.git
+  branch: main
