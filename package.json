@@ -27,6 +27,7 @@
     "hexo-server": "^3.0.0",
     "hexo-symbols-count-time": "^0.7.1",
     "hexo-theme-landscape": "^1.0.0",
+    "hexo-theme-stellar": "^1.44.0",
     "hexo-wordcount": "^6.0.1",
     "semver": "^7.8.5",
     "stylus": "^0.64.0"

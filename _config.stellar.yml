@@ -1,0 +1,231 @@
+######## Stellar info ########
+stellar:
+  version: '2.0.0'
+  homepage: 'https://xaoxuu.com/wiki/stellar/'
+  repo: 'https://github.com/xaoxuu/hexo-theme-stellar'
+  main_css: /css/main.css
+  main_js: /js/main.js
+
+
+######## head tags ########
+preconnect:
+  - https://gcore.jsdelivr.net
+  - https://unpkg.com
+  - https://cdn.jsdelivr.net
+  - https://cdnjs.cloudflare.com
+
+canonical:
+  originalHost:
+  officialHosts:
+    - localhost
+
+open_graph:
+  enable: true
+  twitter_id:
+
+structured_data:
+  links: []
+
+
+######## Sidebar ########
+# 左侧栏品牌信息
+leftbar:
+  brand:
+    style: regular
+    image:
+      src: /img/fantuan.jpg
+      variant: avatar
+    name: CLY'S BLOG
+    tagline: 发疯，偶尔记录学习与生活
+    href: /
+  # 左侧菜单（这才是控制左侧导航的正确字段）
+  menu:
+    - id: post
+      title: 博客
+      icon: default:documents
+      url: /
+    - id: tags
+      title: 标签
+      icon: default:hashtag
+      url: /tags/
+    - id: categories
+      title: 分类
+      icon: default:folder
+      url: /categories/
+    - id: archives
+      title: 归档
+      icon: default:archive
+      url: /archives/
+    - id: about
+      title: 关于
+      icon: default:profile
+      url: /about/
+
+
+######## Main ########
+# 内容 Widget 列表（左侧栏固定菜单不在这里）
+leftbar.widgets: [recent]
+
+# 页面类型配置（对应你的博客布局）
+profiles:
+  home:
+    leftbar: [recent]
+    rightbar: []
+    comments: false
+  blog_index:
+    listing_nav:
+      enabled: false  # 关闭顶部那排 tabs
+    leftbar: [recent]
+    rightbar: []
+  post:
+    leftbar: [related, recent]
+    rightbar: [ghrepo, toc]
+
+
+######## Notebook ########
+notebook:
+  auto_excerpt: 128
+  tagcons:
+    '': quot:hashtag
+  per_page: null
+  order_by: -updated
+  license: false
+  share: false
+
+
+######## Article ########
+article:
+  pin_style: carousel
+  type: tech
+  indent:
+  cover_ratio: 2
+  card_style: hero
+  banner_ratio: 2.5
+  auto_excerpt: 128
+  license: '本文采用 [署名-非商业性使用-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。'
+  share:
+  related_posts:
+    enable: false
+    max_count: 5
+  reading_time: false
+  card_tags: false
+  tags: true
+
+search:
+  service: local_search
+  local_search:
+    field: all
+    path: /search.json
+    content: true
+    lazy_load: true
+    cache_ttl: 86400
+
+######## Comments ########
+comments:
+  service: utterances
+  comment_title: 快来参与讨论吧~
+  utterances:
+    repo: CLY-orz/blog-comments
+    issue-term: pathname
+    theme: preferred-color-scheme
+
+
+######## Footer ########
+footer:
+  social:
+    email:
+      icon: default:email
+      url: mailto:leo_chen_in_cn@outlook.com
+    qq:
+      icon: default:chat
+      url: tencent://message/?uin=3919764686
+  content: '本站由 [{author.name}](/) 使用 [{theme.name} {theme.version}]({theme.tree}) 主题创建。'
+
+
+######## Tag Plugins ########
+tag_plugins:
+  note:
+    default_color: ''
+    border: true
+  quot:
+    default:
+      prefix: quot:quote-left
+      suffix: quot:quote-right
+    hashtag:
+      prefix: quot:hashtag
+    question:
+      prefix: quot:question
+  emoji:
+    default: https://gcore.jsdelivr.net/gh/cdn-x/emoticons@3.1/qq/{name}.gif
+  gallery:
+    layout: grid
+    size: mix
+    ratio: square
+
+
+######## Plugins ########
+plugins:
+  fancybox:
+    enable: true
+  swiper:
+    enable: true
+  scrollreveal:
+    enable: true
+    distance: 8px
+    duration: 1000
+  copycode:
+    enable: true
+    default_text: 'Copy'
+    success_text: 'Copied'
+  adaptive_text:
+    enable: true
+  card_hover:
+    enable: false
+  heti:
+    enable: false
+
+
+######## Style ########
+style:
+  prefers_theme: auto
+  page_transition:
+    enable: true
+  color:
+    theme: 'hsl(192 98% 55%)'
+    accent: 'hsl(14 100% 57%)'
+    link: 'hsl(207 90% 54%)'
+  animated_avatar:
+    animate: auto
+  leftbar:
+    ui-style: card
+    background-color-light: var(--card)
+    background-color-dark: var(--card)
+    blur-px: 100px
+    blur-bg: var(--bg-a60)
+    background-opacity: 0.8
+  error_page: https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/404/1c830bfcd517d.svg
+  site:
+    blur-px: 100px
+    blur-bg: var(--bg-a75)
+    blur-sat: 300%
+
+
+######## Default Assets ########
+default:
+  avatar: /img/fantuan.jpg
+  cover: https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg
+  image: https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg
+  banner: https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/banner/books.jpg
+
+
+######## API Host ########
+api_host:
+  ghapi: api.github.com
+  ghraw: raw.githubusercontent.com
+  gist: gist.github.com
+  ghcard: github-readme-stats.vercel.app
+
+
+######## System ########
+system:
+  override_pretty_urls: true
