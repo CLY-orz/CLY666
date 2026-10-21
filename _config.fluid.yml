@@ -388,6 +388,16 @@ navbar:
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
+    # OI / ACM 代码模板（搬运自 github.com/richenyunqi/code-templates）
+    - { key: '基础算法', link: '/基础算法/', icon: 'iconfont icon-code' }
+    - { key: '数据结构', link: '/数据结构/', icon: 'iconfont icon-notebook' }
+    - { key: '图', link: '/图/', icon: 'iconfont icon-map' }
+    - { key: '动态规划', link: '/动态规划/', icon: 'iconfont icon-chart' }
+    - { key: '字符串', link: '/字符串/', icon: 'iconfont icon-note' }
+    - { key: '数学', link: '/数学/', icon: 'iconfont icon-pen' }
+    - { key: '计算几何', link: '/计算几何/', icon: 'iconfont icon-brush' }
+    - { key: '专题', link: '/专题/', icon: 'iconfont icon-plan' }
+
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
 search:
@@ -761,11 +771,11 @@ post:
   math:
     # 开启后文章默认可用，自定义页面如需使用，需在 Front-matter 中指定 `math: true`
     # If you want to use math on the custom page, you need to set `math: true` in Front-matter
-    enable: false
+    enable: true
 
     # 开启后，只有在文章 Front-matter 里指定 `math: true` 才会在文章页启动公式转换，以便在页面不包含公式时提高加载速度
     # If true, only set `math: true` in Front-matter will enable math, to load faster when the page does not contain math
-    specific: false
+    specific: true
 
     # Options: mathjax | katex
     engine: mathjax
