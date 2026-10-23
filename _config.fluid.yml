@@ -394,6 +394,7 @@ navbar:
       submenu:
         - { key: "2048", link: "/games/2048/", name: "2048" }
         - { key: "gamehub", link: "/games/gamehub/", name: "经典合集" }
+        - { key: "ironhold", link: "/games/ironhold/", name: "铁卫行动 (仅限电脑)" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
