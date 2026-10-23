@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>大富翁3D · 欢乐棋盘</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🎲</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js" } }
+</script>
+</head>
+<body>
+<canvas id="c3d"></canvas>
+<div class="vignette"></div>
+
+<div id="hud" class="hidden">
+  <div id="topbar">
+    <div id="logo-mini"><span>🎲</span> 大富翁3D</div>
+    <div id="turn-banner">
+      <span id="turn-chip"></span>
+      <span id="turn-text">准备开始</span>
+      <span id="turn-sub"></span>
+    </div>
+    <div id="top-btns">
+      <button id="btn-cam" class="small-btn" title="镜头模式">🎥 跟随</button>
+      <button id="btn-music" class="small-btn" title="背景音乐">🎵</button>
+      <button id="btn-rules" class="small-btn">📖 规则</button>
+      <button id="btn-sound" class="small-btn">🔊</button>
+      <button id="btn-new" class="small-btn">🔄 新游戏</button>
+    </div>
+  </div>
+
+  <div id="players"></div>
+  <div id="log"></div>
+
+  <div id="controls">
+    <div id="items"></div>
+    <div id="ctrl-btns">
+      <button id="btn-build" class="mid-btn">🏠 盖房</button>
+      <button id="dice-btn" class="big-btn">🎲 掷骰子</button>
+    </div>
+  </div>
+</div>
+
+<div id="setup" class="overlay"></div>
+<div id="modal-root"></div>
+<div id="toast-root"></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

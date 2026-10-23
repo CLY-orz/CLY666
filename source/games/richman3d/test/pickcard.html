@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>pickcard-test</title>
+</head>
+<body>
+<div id="hud" class="hidden">
+  <div id="topbar">
+    <div id="logo-mini"></div>
+    <div id="turn-banner"><span id="turn-chip"></span><span id="turn-text"></span><span id="turn-sub"></span></div>
+    <div id="top-btns">
+      <button id="btn-cam"></button><button id="btn-music"></button><button id="btn-rules"></button>
+      <button id="btn-sound"></button><button id="btn-new"></button>
+    </div>
+  </div>
+  <div id="players"></div>
+  <div id="log"></div>
+  <div id="controls">
+    <div id="items"></div>
+    <div id="ctrl-btns"><button id="btn-build"></button><button id="dice-btn"></button></div>
+  </div>
+</div>
+<div id="setup" class="overlay"></div>
+<div id="modal-root"></div>
+<div id="toast-root"></div>
+
+<script type="module">
+// 翻牌盲选交互自检：模拟真实点击流程，验证 Promise 能正常返回
+import { ui } from '../js/ui.js';
+import { CHANCE_CARDS } from '../js/config.js';
+
+const fakeSound = { card() {}, click() {}, setEnabled() {}, isEnabled() { return true; }, setMusicEnabled() {}, isMusicEnabled() { return true; }, unlock() {} };
+ui.init({ onRoll() {}, onUseItem() {}, assets() { return 0; } }, fakeSound);
+
+const p = { name: '测试员', charIdx: 0, ai: false };
+let phase = 'opening';
+const result = (ok, msg) => {
+  document.title = (ok ? 'PICK-OK' : 'PICK-FAIL') + ' ' + msg;
+  document.body.textContent = document.title;
+};
+
+ui.pickCard('chance', p, CHANCE_CARDS.slice(0, 5)).then((i) => {
+  const modalGone = !document.querySelector('.modal-mask');
+  result(i === 2 && modalGone, `picked=${i} modalGone=${modalGone} enlarged=${enlarged}`);
+}).catch((e) => result(false, 'reject:' + (e && e.message)));
+
+let enlarged = false;
+setTimeout(() => {
+  const cards = document.querySelectorAll('.pick-card');
+  if (cards.length !== 5) return result(false, 'cards=' + cards.length);
+  cards[2].click();                      // 点第 3 张卡
+  setTimeout(() => {
+    const el = cards[2];
+    enlarged = (el.style.transform || '').indexOf('scale(1.95)') >= 0;
+    const ok = document.querySelector('.js-ok');
+    if (!ok || getComputedStyle(ok).display === 'none') return result(false, 'okBtn not visible');
+    ok.click();                           // 点「就选这张！」
+  }, 1000);
+}, 800);
+</script>
+</body>
+</html>

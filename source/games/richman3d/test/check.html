@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>draw-check</title>
+</head>
+<body>
+<script type="module">
+// 纯 2D 绘制自检：在真实浏览器中渲染全部 Canvas 素材并标记结果
+import { boardCanvas, diceFaceCanvas, cardFaceCanvas, cardBackCanvas, deedCanvas, moneyCanvas, avatarCanvas, itemIconCanvas, coinCanvas, buildingCanvas } from '../js/draw.js';
+import { TILES, ITEMS, CHARS } from '../js/config.js';
+try {
+  const imgs = [];
+  imgs.push(boardCanvas().toDataURL());
+  for (let v = 1; v <= 6; v++) imgs.push(diceFaceCanvas(v, '#fff8ea', '#241a12').toDataURL());
+  imgs.push(cardFaceCanvas('chance', '机会', '前进至「起点」，领取 ¥2000 过路工资！', '#f7941e').toDataURL());
+  imgs.push(cardFaceCanvas('event', '事件', '股票大涨！分红 ¥1000。', '#2f6fd6').toDataURL());
+  imgs.push(cardBackCanvas().toDataURL());
+  TILES.filter(t => ['prop', 'rail', 'util', 'tax', 'chance', 'event'].includes(t.type)).forEach(t => imgs.push(deedCanvas(t).toDataURL()));
+  [100, 500, 1000, 2000, 5000].forEach(v => imgs.push(moneyCanvas(v).toDataURL()));
+  CHARS.forEach(c => imgs.push(avatarCanvas(c).toDataURL()));
+  Object.keys(ITEMS).forEach(k => imgs.push(itemIconCanvas(k).toDataURL()));
+  imgs.push(coinCanvas().toDataURL());
+  imgs.push(buildingCanvas('#ff8fb1', '#e8384f').toDataURL());
+  const bad = imgs.filter(u => u === 'data:,' || u.length < 100).length;
+  document.title = `DRAW-OK total=${imgs.length} bad=${bad}`;
+  document.body.textContent = document.title;
+} catch (e) {
+  document.title = 'DRAW-FAIL ' + (e && e.message);
+  document.body.textContent = document.title;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>大富翁3D · 素材展示</title>
+<style>
+html,body{margin:0;padding:0;background:#f5f5f7;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{width:1420px;margin:0 auto;padding:26px 30px;display:flex;flex-direction:column;gap:0}
+h1{font-size:30px;font-weight:700;margin:0;color:#1d1d1f}
+.sub{color:#6e6e73;font-size:14px;margin:4px 0 18px}
+.cols{display:flex;gap:22px}
+.left{flex:none}
+.right{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
+.sec-title{font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 8px}
+.sec{background:#fff;border-radius:16px;padding:14px 16px;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.thumb{text-align:center}
+.thumb .lbl{font-size:12px;font-weight:600;color:#1d1d1f;margin-top:4px}
+.thumb img{border-radius:10px;display:block;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+#board{display:block;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>大富翁 3D</h1>
+  <div class="sub">RICHMAN 3D · 52 格中国城市棋盘 · 16 色组 × 2 城 · 掷骰买地盖房收租 · 多人同乐</div>
+  <div class="cols">
+    <div class="left">
+      <canvas id="board"></canvas>
+    </div>
+    <div class="right">
+      <div class="sec">
+        <div class="sec-title">🎲 骰子 &amp; 卡牌</div>
+        <div class="row" id="dice"></div>
+      </div>
+      <div class="sec">
+        <div class="sec-title">🏛 城市地契与地标</div>
+        <div class="row" id="deeds"></div>
+      </div>
+      <div class="sec">
+        <div class="sec-title">🧑‍🎨 角色</div>
+        <div class="row" id="chars"></div>
+      </div>
+      <div class="sec">
+        <div class="sec-title">💴 纸币 &amp; 🧰 道具</div>
+        <div class="row" id="money"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module">
+import { boardCanvas, diceFaceCanvas, cardFaceCanvas, cardBackCanvas, deedCanvas, moneyCanvas, avatarCanvas, itemIconCanvas } from '../js/draw.js';
+import { TILES, ITEMS, CHARS } from '../js/config.js';
+
+// 棋盘：保持原始像素尺寸，仅用 CSS 缩放显示（修改 width 会清空画布）
+const board = boardCanvas();
+board.style.width = '700px';
+board.style.height = '700px';
+document.getElementById('board').replaceWith(board);
+
+const thumb = (box, src, w, h, label) => {
+  const img = document.createElement('img');
+  img.src = src; img.width = w; if (h) img.height = h;
+  const d = document.createElement('div'); d.className = 'thumb';
+  d.appendChild(img);
+  if (label) { const p = document.createElement('div'); p.className = 'lbl'; p.textContent = label; d.appendChild(p); }
+  box.appendChild(d);
+};
+
+// 骰子 + 卡牌
+const dice = document.getElementById('dice');
+for (let v = 1; v <= 6; v++) thumb(dice, diceFaceCanvas(v, '#fff8ea', '#241a12').toDataURL(), 74, 74);
+thumb(dice, cardBackCanvas().toDataURL(), 96, 134);
+thumb(dice, cardFaceCanvas('chance', '机会', '前进至「起点」，领取 ¥3000 过路工资！', '#f7941e').toDataURL(), 96, 134);
+thumb(dice, cardFaceCanvas('event', '事件', '彩票中奖 ¥2000！运气爆棚！', '#2f6fd6').toDataURL(), 96, 134);
+
+// 地契
+const deeds = document.getElementById('deeds');
+[['苏州 · 东方之门', 6], ['北京 · 故宫', 18], ['上海 · 东方明珠', 44]].forEach(([label, idx]) => {
+  thumb(deeds, deedCanvas(TILES[idx]).toDataURL(), 130, 185, label);
+});
+
+// 角色
+const chars = document.getElementById('chars');
+CHARS.forEach(ch => thumb(chars, avatarCanvas(ch, 128).toDataURL(), 62, 62, ch.name));
+
+// 纸币 + 道具
+const money = document.getElementById('money');
+[100, 1000, 5000].forEach(v => thumb(money, moneyCanvas(v).toDataURL(), 148, 66, '¥' + v));
+Object.keys(ITEMS).forEach(k => thumb(money, itemIconCanvas(k).toDataURL(), 62, 62, ITEMS[k].name));
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>money-test</title>
+</head>
+<body>
+<div id="hud" class="hidden">
+  <div id="topbar">
+    <div id="logo-mini"></div>
+    <div id="turn-banner"><span id="turn-chip"></span><span id="turn-text"></span><span id="turn-sub"></span></div>
+    <div id="top-btns">
+      <button id="btn-cam"></button><button id="btn-music"></button><button id="btn-rules"></button>
+      <button id="btn-sound"></button><button id="btn-new"></button>
+    </div>
+  </div>
+  <div id="players"></div>
+  <div id="log"></div>
+  <div id="controls">
+    <div id="items"></div>
+    <div id="ctrl-btns"><button id="btn-build"></button><button id="dice-btn"></button></div>
+  </div>
+</div>
+<div id="setup" class="overlay"></div>
+<div id="modal-root"></div>
+<div id="toast-root"></div>
+
+<script type="module">
+// 初始资金链路自检：点 ¥3万 档位 → 点开始游戏 → 检查回调收到的 startMoney
+import { ui } from '../js/ui.js';
+
+const fakeSound = { card() {}, click() {}, setEnabled() {}, isEnabled() { return true; }, setMusicEnabled() {}, isMusicEnabled() { return true; }, unlock() {} };
+ui.init({ onRoll() {}, onUseItem() {}, assets() { return 0; } }, fakeSound);
+
+let got = null;
+ui.showSetup((cfg) => {
+  got = cfg;
+  document.body.textContent = `MONEY-OK startMoney=${cfg.startMoney} players=${cfg.players.length} mode=${cfg.mode.type}`;
+});
+
+setTimeout(() => {
+  const chip = document.querySelector('.money-opts .opt[data-m="30000"]');
+  if (!chip) { document.body.textContent = 'MONEY-FAIL no-chip'; return; }
+  chip.click();
+  setTimeout(() => {
+    document.querySelector('.start-btn').click();
+    if (!got) document.body.textContent = 'MONEY-FAIL no-callback';
+  }, 200);
+}, 400);
+</script>
+</body>
+</html>
