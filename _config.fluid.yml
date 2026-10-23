@@ -390,7 +390,7 @@ navbar:
     # 新增的小游戏子菜单
     - key: "games"
       icon: "iconfont icon-game-fill"
-      name: "小游戏"
+      name: "适当娱乐哦"
       submenu:
         - { key: "2048", link: "/games/2048/", name: "2048" }
         - { key: "gamehub", link: "/games/gamehub/", name: "经典合集" }
