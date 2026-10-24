@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>大乱斗</title>
+    <style>
+        /* 抹除所有边距，让 iframe 占满全屏 */
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #111; }
+        iframe { width: 100%; height: 100%; border: none; display: block; }
+    </style>
+</head>
+<body>
+    <!-- 将 index.html 嵌入到全屏的 iframe 中，这样游戏的跳转全在里面，不会触发博客的刷新和套壳 -->
+    <iframe src="index.html"></iframe>
+</body>
+</html>
