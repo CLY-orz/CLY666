@@ -18,11 +18,11 @@
 
 # 用于浏览器标签的图标
 # Icon for browser tab
-favicon: /img/fluid.png
+favicon: /img/smile.png
 
 # 用于苹果设备的图标
 # Icon for Apple touch
-apple_touch_icon: /img/fluid.png
+apple_touch_icon: /img/smile.png
 
 # 浏览器标签页中的标题分隔符，效果：文章名 - 站点名
 # Title separator in browser tab, eg: article - site
@@ -394,9 +394,9 @@ navbar:
       name: "适当娱乐哦"
       submenu:
         - { key: "2048", link: "/games/2048/", name: "2048" }
-        - { key: "gamehub", link: "/games/gamehub/", name: "经典合集" }
-        - { key: "ironhold", link: "/games/ironhold/", name: "FPS-铁卫行动" }
-        - { key: "richman3d", link: "/games/richman3d/", name: "桌游-3D大富翁(中国城市版)" }
+        - { key: "gamehub", link: "/games/gamehub/", name: "经典游戏合集" }
+        - { key: "ironhold", link: "/games/ironhold/", name: "铁卫行动" }
+        - { key: "richman3d", link: "/games/richman3d/", name: "3D大富翁" }
         - { key: "abstractbrawl", link: "/games/abstract-brawl/play.html", name: "抽象大乱斗" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
@@ -472,13 +472,7 @@ open_graph:
 # Footer
 #---------------------------
 footer:
-  # 页脚第一行文字的 HTML，建议保留 Fluid 的链接，用于向更多人推广本主题
-  # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
-  content: '
-    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
-  '
+  content: "<span>CLY's Nest · 真的不是摸鱼办</span>"
 
   # 展示网站的 PV、UV 统计数
   # Display website PV and UV statistics
@@ -1064,7 +1058,7 @@ page404:
 # Links Page
 #---------------------------
 links:
-  enable: true
+  enable: false
   banner_img: /img/404.png
   banner_img_height: 60
   banner_mask_alpha: 0.3
