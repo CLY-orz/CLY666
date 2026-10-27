@@ -472,7 +472,7 @@ open_graph:
 # Footer
 #---------------------------
 footer:
-  content: "<span>CLY's Nest · 真的不是摸鱼办</span>"
+  content: "<span>CLY's Nest - Update for 10/27</span>"
 
   # 展示网站的 PV、UV 统计数
   # Display website PV and UV statistics
