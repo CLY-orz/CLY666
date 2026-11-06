@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="description" content="CLY's Nest 本地 Excalidraw 白板" />
+    <link rel="icon" href="/img/smile.png" />
+    <title>白板 · CLY's Nest</title>
+    <script>
+      // 字体随 Hexo 发布在 /draw/fonts/，避免运行时依赖 excalidraw CDN。
+      window.EXCALIDRAW_ASSET_PATH = "/draw/";
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

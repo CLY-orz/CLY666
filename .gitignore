@@ -7,3 +7,5 @@ public/
 .deploy*/
 _multiconfig.ymltwikoo-cf-workers/
 twikoo-cf-workers/
+.npm-cache-draw/
+source/draw/
