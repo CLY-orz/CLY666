@@ -1,4 +1,4 @@
-import { Excalidraw } from "@excalidraw/excalidraw";
+import { Excalidraw, WelcomeScreen, useI18n } from "@excalidraw/excalidraw";
 import "@excalidraw/excalidraw/index.css";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 
@@ -29,6 +29,33 @@ const PERSISTED_APP_STATE_KEYS = [
   "zoom",
   "theme"
 ];
+
+function DrawWelcomeScreen() {
+  const { t } = useI18n();
+  return (
+    <WelcomeScreen>
+      <WelcomeScreen.Hints.MenuHint>
+        {t("welcomeScreen.app.menuHint")}
+      </WelcomeScreen.Hints.MenuHint>
+      <WelcomeScreen.Hints.ToolbarHint />
+      <WelcomeScreen.Hints.HelpHint />
+      <WelcomeScreen.Center>
+        <WelcomeScreen.Center.Logo />
+        <WelcomeScreen.Center.Heading>
+          您的绘图已保存在您的浏览器存储中。
+          <br />
+          浏览器存储可能会被无意清除。
+          <br />
+          将您的工作定期保存到一个文件，以避免丢失。
+        </WelcomeScreen.Center.Heading>
+        <WelcomeScreen.Center.Menu>
+          <WelcomeScreen.Center.MenuItemLoadScene />
+          <WelcomeScreen.Center.MenuItemHelp />
+        </WelcomeScreen.Center.Menu>
+      </WelcomeScreen.Center>
+    </WelcomeScreen>
+  );
+}
 
 function loadInitialData() {
   try {
@@ -129,7 +156,9 @@ export default function App() {
         initialData={initialData}
         onChange={handleChange}
         name="CLY-白板"
-      />
+      >
+        <DrawWelcomeScreen />
+      </Excalidraw>
     </main>
   );
 }

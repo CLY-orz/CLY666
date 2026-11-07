@@ -22,3 +22,9 @@ body {
   width: 100%;
   height: 100%;
 }
+
+/* 官方欢迎页在 600–900px 高度会给中间内容额外加 8rem 上边距，
+   会让 Logo 和菜单明显偏下；参考站是垂直居中的，这里保持一致。 */
+.draw-shell .excalidraw .welcome-screen-center {
+  margin-top: 0;
+}
