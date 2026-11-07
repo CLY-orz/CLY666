@@ -23,30 +23,31 @@ npm run build    # 输出到 ../source/draw/，并复制自托管字体
 
 ## 重新生成并发布
 
+Cloudflare Pages 从 GitHub 仓库（`CLY-orz/CLY666` 的 `main` 分支）执行
+`npx hexo generate` 构建，构建过程中不会安装或执行 `excalidraw-app`，
+因此 `source/draw/` 里的**构建产物必须提交到 Git**，否则线上 `/draw/`
+会返回 404（这正是之前打不开的原因）。
+
+发布新版本：
+
 ```bash
 cd "$HOME/LEO BLOG"
-npm --prefix excalidraw-app run build
-npx hexo clean
-npx hexo generate
-npx hexo deploy
+npm --prefix excalidraw-app run build   # 重新生成 source/draw/
+npx hexo clean && npx hexo generate     # 本地预览
+git add source/draw
+git commit -m "update draw build"
+git push                                # 触发 Cloudflare Pages 自动部署
 ```
 
-如果部署平台从源码构建（例如 Cloudflare Pages），把构建命令设置为：
+如果手动 `hexo deploy` 到 `CLY666-deploy`，则用：
 
 ```bash
-npm --prefix excalidraw-app ci && npm --prefix excalidraw-app run build && npx hexo generate
+npm --prefix excalidraw-app run build
+npx hexo clean && npx hexo generate && npx hexo deploy
 ```
 
-输出目录仍为 `public`。
+## .gitignore 注意事项
 
-## .gitignore 建议
-
-如果不想把约 20 MB 的构建产物提交到 Git，在博客根目录 `.gitignore` 增加：
-
-```gitignore
-source/draw/
-excalidraw-app/node_modules/
-```
-
-如果希望仓库克隆后直接 `hexo generate` 就能用，则不要忽略
-`source/draw/`（但会提交较大的字体和 JS 文件）。
+**不要**把 `source/draw/` 加入 `.gitignore`。它现在约有 20 MB（JS 分包 +
+自托管字体），但必须随源码一起提交，Cloudflare Pages 才能发布 `/draw/`。
+`source/draw/.DS_Store` 由根目录 `.gitignore` 的 `.DS_Store` 规则忽略。
